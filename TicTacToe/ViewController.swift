@@ -46,10 +46,10 @@ class ViewController: UIViewController {
     func checkWinner() {
         
         let score = evaluate(scores: scores)
-        if score != 0 {
+        if let score = score {
             
             let alert = UIAlertController()
-            alert.message = "El ganador es: \(score == 10 ? "X" : "O")"
+            alert.message = "El ganador es: \(score)"
             
             let reset = UIAlertAction(title: "aceptar", style: UIAlertActionStyle.default, handler: { [unowned self] (action) in
                 

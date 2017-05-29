@@ -22,14 +22,14 @@ func isMovesLeft(scores: [[String]]) -> Bool{
  *
  * @return 10 or -1O if there are a winner, 0 otherwise
  */
-func evaluate(scores: [[String]]) -> Int {
+func evaluate(scores: [[String]]) -> String? {
     
     //search winner horizontaly
     for line in scores {
         let jointLine = line.joined()
         if !jointLine.isEmpty {
             if line[0] == line[1] && line[0] == line[2] {
-                return line[0] == "X" ? 10 : -10
+                return line[0]
             }
         }
     }
@@ -43,7 +43,7 @@ func evaluate(scores: [[String]]) -> Int {
             let c = scores[2][n]
             
             if a == b && a == c {
-                return a == "X" ? 10 : -10
+                return a
             }
         }
     }
@@ -53,18 +53,18 @@ func evaluate(scores: [[String]]) -> Int {
        scores[1][1] == scores[2][2] {
         
         if (!(scores[0][0].isEmpty || scores[1][1].isEmpty || scores[2][2].isEmpty)) {
-            return scores[0][0] == "X" ? 10 : -10
+            return scores[0][0]
         }
     }
     if scores[2][0] == scores[1][1] &&
        scores[1][1] == scores[0][2] {
         
         if (!(scores[2][0].isEmpty || scores[1][1].isEmpty || scores[0][2].isEmpty)) {
-            return scores[2][0] == "X" ? 10 : -10
+            return scores[2][0]
         }
     }
     
-    return 0
+    return nil
 }
 
 
@@ -73,12 +73,12 @@ func minimax(scores: inout [[String]], depth: Int, isMax: Bool) -> Int {
     
     let score = evaluate(scores: scores)
     
-    if score == 10 {
-        return score
+    if score == "X" {
+        return 10
     }
     
-    if score == -10 {
-        return score
+    if score == "O" {
+        return -10
     }
     
     
