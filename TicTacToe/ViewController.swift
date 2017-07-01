@@ -25,7 +25,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
     
     @IBAction func squarePressed(_ sender: UIButton) {
             
@@ -66,7 +65,8 @@ class ViewController: UIViewController {
             
         } else if tie() {
             
-            let alert = UIAlertController(title: "Empate", message: "has empatado jaja!", preferredStyle: .alert)
+            let a
+            
             let reset = UIAlertAction(title: "aceptar", style: UIAlertActionStyle.default, handler: { [unowned self] (action) in
                 
                 self.scores = [ ["","",""], ["","",""], ["","",""] ]
@@ -117,6 +117,8 @@ class ViewController: UIViewController {
             let section = index / 3
             let row = index % 3            
             scores[section][row] = score
+            
+            print(scores)
         }
     }
     

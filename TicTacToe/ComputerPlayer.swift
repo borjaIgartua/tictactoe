@@ -20,7 +20,8 @@ func isMovesLeft(scores: [[String]]) -> Bool{
 /**
  * Evaluate if any player has wone
  *
- * @return 10 or -1O if there are a winner, 0 otherwise
+ * @param scores. All the evaluated scores
+ * @return O or X if there are a winner, nil otherwise
  */
 func evaluate(scores: [[String]]) -> String? {
     
