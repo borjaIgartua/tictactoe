@@ -27,7 +27,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func squarePressed(_ sender: UIButton) {
-            
         
         let currentImage = sender.image(for: .normal)
         
@@ -65,7 +64,7 @@ class ViewController: UIViewController {
             
         } else if tie() {
             
-            let a
+            let alert = UIAlertController(title: "Empate", message: "has empatado jaja!", preferredStyle: .alert)
             
             let reset = UIAlertAction(title: "aceptar", style: UIAlertActionStyle.default, handler: { [unowned self] (action) in
                 
@@ -84,7 +83,7 @@ class ViewController: UIViewController {
             
             if turn == .cross {
                 
-                //TODO: disable interfaz while cross are painting
+                updateBoardIteraction(enabled: false)
                 Timer.scheduledTimer(timeInterval: 1.0,
                                      target: self,
                                      selector: #selector(ViewController.drawCrossBestMove),
@@ -105,6 +104,7 @@ class ViewController: UIViewController {
         
         scores[point.row][point.col] = "X"
         self.turn = .circle
+        updateBoardIteraction(enabled: true)
         
         checkWinner()
     }
@@ -117,8 +117,6 @@ class ViewController: UIViewController {
             let section = index / 3
             let row = index % 3            
             scores[section][row] = score
-            
-            print(scores)
         }
     }
     
@@ -133,6 +131,12 @@ class ViewController: UIViewController {
         }
         
         return true
+    }
+    
+    func updateBoardIteraction(enabled: Bool) {
+        for button in self.boardButtons {
+            button.isUserInteractionEnabled = enabled
+        }
     }
 }
 
