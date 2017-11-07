@@ -14,9 +14,7 @@ class Square: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        print("asdasd")
-        
+            
     }
     
     required init?(coder aDecoder: NSCoder) {
